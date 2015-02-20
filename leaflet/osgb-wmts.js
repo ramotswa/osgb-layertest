@@ -13,7 +13,7 @@ var crs = new L.Proj.CRS(
 var map = new L.Map('map', {
     crs: crs   
 });
-
+var url = "http://ivm-dev-geoserver01-c1:8080/geoserver/gwc/service/wmts?"
 var layerTimerStart;
 var layerTimerStop;
 var tileTimerStart;
@@ -23,8 +23,20 @@ var tileCount;
 
 map.setView([51.5, -0.2], 10);
 
+var myNewLayer = new L.TileLayer.WMTS( url ,
+                               {
+                                   layer: 'collinsbartholomew:Londonpanorama20',
+                                   style: "normal",
+                                   tilematrixSet: "ESPG:27700",
+                                   format: "image/png8",
+                                   tilesize: 128
+                               }
+                              );
 
-var myLayer = L.tileLayer.wms('URLINHERE:8080/geoserver/gwc/service/wms?',
+map.addLayer(myNewLayer);
+
+
+var myLayer = L.tileLayer.wms('http://ivm-dev-geoserver01-c1:8080/geoserver/gwc/service/wms?',
  {
     //subdomains: ['1','2'],
     layers: 'collinsbartholomew:Londonpanorama20',
@@ -36,7 +48,10 @@ var myLayer = L.tileLayer.wms('URLINHERE:8080/geoserver/gwc/service/wms?',
     maxZoom: 14,
     minZoom: 0,
     continuousWorld: true
-}).addTo(map);
+});
+
+map.addLayer(myLayer);
+
 
 myLayer.on("loading",function() {
     layerTimeStart = new Date();
