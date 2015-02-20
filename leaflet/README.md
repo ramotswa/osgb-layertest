@@ -1,5 +1,7 @@
-This is a test environment for an OSGB WMTS / WMS layer test. 
+This is a test environment for an OSGB WMS layer test written in Leaflet.  
+The WMS can be a native WMS or a WMS-C service. 
 
+Leaflet doesn't yet support WMTS out of the box. 
 
 Usage; 
 
