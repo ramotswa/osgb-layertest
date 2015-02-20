@@ -13,7 +13,7 @@ var crs = new L.Proj.CRS(
 var map = new L.Map('map', {
     crs: crs   
 });
-var url = "http://ivm-dev-geoserver01-c1:8080/geoserver/gwc/service/wmts?"
+var url = "http://URLINHERE:8080/geoserver/gwc/service/wmts?"
 var layerTimerStart;
 var layerTimerStop;
 var tileTimerStart;
@@ -36,7 +36,7 @@ var myNewLayer = new L.TileLayer.WMTS( url ,
 map.addLayer(myNewLayer);
 
 
-var myLayer = L.tileLayer.wms('http://ivm-dev-geoserver01-c1:8080/geoserver/gwc/service/wms?',
+var myLayer = L.tileLayer.wms('URLINHERE:8080/geoserver/gwc/service/wms?',
  {
     //subdomains: ['1','2'],
     layers: 'collinsbartholomew:Londonpanorama20',
